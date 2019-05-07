@@ -1,4 +1,3 @@
-
 resource "random_id" "cloud" {
   byte_length = 4
 }
@@ -7,7 +6,7 @@ resource "null_resource" "controller-openstack" {
   depends_on = ["null_resource.hostfile-distributed"]
 
   connection {
-    host = "${packet_device.controller.access_public_ipv4}"
+    host        = "${packet_device.controller.access_public_ipv4}"
     private_key = "${file("${var.cloud_ssh_key_path}")}"
   }
 
@@ -41,7 +40,7 @@ resource "null_resource" "controller-openstack" {
 
   provisioner "file" {
     source      = "ControllerNova.sh"
-    destination  = "ControllerNova.sh"
+    destination = "ControllerNova.sh"
   }
 
   provisioner "file" {
@@ -57,11 +56,11 @@ resource "null_resource" "controller-openstack" {
   }
 }
 
-resource "null_resource" "dashboard-openstack" {
+resource "null_resource" "dashboard-prep" {
   depends_on = ["null_resource.controller-openstack"]
 
   connection {
-    host = "${packet_device.dashboard.access_public_ipv4}"
+    host        = "${packet_device.dashboard.access_public_ipv4}"
     private_key = "${file("${var.cloud_ssh_key_path}")}"
   }
 
@@ -75,6 +74,15 @@ resource "null_resource" "dashboard-openstack" {
       "bash CommonServerSetup.sh > CommonServerSetup.out",
     ]
   }
+}
+
+resource "null_resource" "dashboard-openstack" {
+  depends_on = ["null_resource.dashboard-prep"]
+
+  connection {
+    host        = "${packet_device.dashboard.access_public_ipv4}"
+    private_key = "${file("${var.cloud_ssh_key_path}")}"
+  }
 
   provisioner "remote-exec" {
     inline = [
@@ -87,13 +95,11 @@ resource "null_resource" "dashboard-openstack" {
     destination = "/etc/openstack-dashboard/local_settings.py"
   }
 
-
   provisioner "remote-exec" {
     inline = [
-      "service apache2 reload"
+      "service apache2 reload",
     ]
   }
-
 }
 
 resource "null_resource" "compute-x86-openstack" {
@@ -102,7 +108,7 @@ resource "null_resource" "compute-x86-openstack" {
   count = "${var.openstack_compute-x86_count}"
 
   connection {
-    host = "${element(packet_device.compute-x86.*.access_public_ipv4, count.index)}"
+    host        = "${element(packet_device.compute-x86.*.access_public_ipv4, count.index)}"
     private_key = "${file("${var.cloud_ssh_key_path}")}"
   }
 
@@ -136,7 +142,7 @@ resource "null_resource" "compute-arm-openstack" {
   count = "${var.openstack_compute-arm_count}"
 
   connection {
-    host = "${element(packet_device.compute-arm.*.access_public_ipv4, count.index)}"
+    host        = "${element(packet_device.compute-arm.*.access_public_ipv4, count.index)}"
     private_key = "${file("${var.cloud_ssh_key_path}")}"
   }
 
@@ -164,4 +170,3 @@ resource "null_resource" "compute-arm-openstack" {
     ]
   }
 }
-
