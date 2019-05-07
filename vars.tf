@@ -9,7 +9,6 @@ variable "packet_project_id" {
 
 variable "packet_facility" {
   description = "Packet facility: US East(ewr1), US West(sjc1), Tokyo (nrt1) or EU(ams1). Default: ewr1"
-  default = "ewr1"
   type = "list"
 }
 
