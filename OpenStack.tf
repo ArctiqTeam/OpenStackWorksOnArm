@@ -87,6 +87,8 @@ resource "null_resource" "dashboard-openstack" {
   provisioner "remote-exec" {
     inline = [
       "apt-get -y install openstack-dashboard > Dashboard.out",
+      "chmod 600 /var/lib/openstack-dashboard/secret_key",
+      "apt-get -y install openstack-dashboard > Dashboard.out",
     ]
   }
 
