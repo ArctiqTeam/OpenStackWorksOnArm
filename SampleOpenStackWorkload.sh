@@ -31,91 +31,91 @@ GATEWAY_ID=`openstack router create \
 
 openstack router add subnet $GATEWAY_ID $SUBNET_ID
 
-#
-# create a cirros x86 machine
-#
-openstack server create \
-	--flavor m1.tiny \
-	--network ${NETWORK_ID} \
-	--security-group ${SEC_GROUP} \
-	--image Cirros-x86_64 \
-	--key-name default \
-	Cirros-x86
+# #
+# # create a cirros x86 machine
+# #
+# openstack server create \
+# 	--flavor m1.tiny \
+# 	--network ${NETWORK_ID} \
+# 	--security-group ${SEC_GROUP} \
+# 	--image Cirros-x86_64 \
+# 	--key-name default \
+# 	Cirros-x86
 
-#
-# create x86 machines with password based logins enabled
-#
-openstack server create \
-	--flavor m1.small \
-	--network ${NETWORK_ID} \
-	--security-group ${SEC_GROUP} \
-	--image CentOS-7-x86_64 \
-	--key-name default \
-	--user-data userdata.txt \
-	Centos-x86
+# #
+# # create x86 machines with password based logins enabled
+# #
+# openstack server create \
+# 	--flavor m1.small \
+# 	--network ${NETWORK_ID} \
+# 	--security-group ${SEC_GROUP} \
+# 	--image CentOS-7-x86_64 \
+# 	--key-name default \
+# 	--user-data userdata.txt \
+# 	Centos-x86
 
-#
-# create ARM machines with password based logins enabled
-#
-openstack server create \
-	--flavor m1.small \
-	--network ${NETWORK_ID} \
-	--security-group ${SEC_GROUP} \
-	--image Artful-arm64 \
-	--key-name default \
-	--user-data userdata.txt \
-	Artful-arm64
+# #
+# # create ARM machines with password based logins enabled
+# #
+# openstack server create \
+# 	--flavor m1.small \
+# 	--network ${NETWORK_ID} \
+# 	--security-group ${SEC_GROUP} \
+# 	--image Artful-arm64 \
+# 	--key-name default \
+# 	--user-data userdata.txt \
+# 	Artful-arm64
 
-openstack server create \
-	--flavor m1.small \
-	--network ${NETWORK_ID} \
-	--security-group ${SEC_GROUP} \
-	--image Trusty-arm64 \
-	--key-name default \
-	--user-data userdata.txt \
-	Trusty-arm64
+# openstack server create \
+# 	--flavor m1.small \
+# 	--network ${NETWORK_ID} \
+# 	--security-group ${SEC_GROUP} \
+# 	--image Trusty-arm64 \
+# 	--key-name default \
+# 	--user-data userdata.txt \
+# 	Trusty-arm64
 
-openstack server create \
-	--flavor m1.small \
-	--network ${NETWORK_ID} \
-	--security-group ${SEC_GROUP} \
-	--image Bionic-arm64 \
-	--key-name default \
-	--user-data userdata.txt \
-	Bionic-arm64
+# openstack server create \
+# 	--flavor m1.small \
+# 	--network ${NETWORK_ID} \
+# 	--security-group ${SEC_GROUP} \
+# 	--image Bionic-arm64 \
+# 	--key-name default \
+# 	--user-data userdata.txt \
+# 	Bionic-arm64
 
-openstack server create \
-	--flavor m1.small \
-	--network ${NETWORK_ID} \
-	--security-group ${SEC_GROUP} \
-  --image CentOS-7-arm64 \
-  --key-name default \
-  --user-data userdata.txt \
-  Centos-arm64
+# openstack server create \
+# 	--flavor m1.small \
+# 	--network ${NETWORK_ID} \
+# 	--security-group ${SEC_GROUP} \
+#   --image CentOS-7-arm64 \
+#   --key-name default \
+#   --user-data userdata.txt \
+#   Centos-arm64
 
-openstack server create \
-	--flavor m1.small \
-	--network ${NETWORK_ID} \
-	--security-group ${SEC_GROUP} \
-	--image Xenial-arm64 \
-	--key-name default \
-	--user-data userdata.txt \
-	Xenial-arm64
+# openstack server create \
+# 	--flavor m1.small \
+# 	--network ${NETWORK_ID} \
+# 	--security-group ${SEC_GROUP} \
+# 	--image Xenial-arm64 \
+# 	--key-name default \
+# 	--user-data userdata.txt \
+# 	Xenial-arm64
 
-openstack server create \
-	--flavor m1.small \
-	--network ${NETWORK_ID} \
-	--security-group ${SEC_GROUP} \
-	--image Fedora-26-arm64 \
-	--key-name default \
-	--user-data userdata.txt \
-	Fedora-arm64
+# openstack server create \
+# 	--flavor m1.small \
+# 	--network ${NETWORK_ID} \
+# 	--security-group ${SEC_GROUP} \
+# 	--image Fedora-26-arm64 \
+# 	--key-name default \
+# 	--user-data userdata.txt \
+# 	Fedora-arm64
 
-openstack server create \
-	--flavor m1.tiny \
-	--network ${NETWORK_ID} \
-	--security-group ${SEC_GROUP} \
-	--image Cirros-arm64 \
-	--key-name default \
-	--user-data userdata.txt \
-	Cirros-arm64
+# openstack server create \
+# 	--flavor m1.tiny \
+# 	--network ${NETWORK_ID} \
+# 	--security-group ${SEC_GROUP} \
+# 	--image Cirros-arm64 \
+# 	--key-name default \
+# 	--user-data userdata.txt \
+# 	Cirros-arm64
