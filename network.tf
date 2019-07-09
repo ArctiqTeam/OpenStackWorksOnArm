@@ -2,5 +2,5 @@
 resource "packet_vlan" "vlan1" {
   description = "Tenant VLAN OCP"
   facility    = "ewr1"
-  project_id  = "${env.TF_VAR_packet_project_id}"
+  project_id  = "${var.packet_project_id}"
 }
