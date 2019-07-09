@@ -4,11 +4,11 @@
 
 packet_facility = ["ewr1"]
 
-packet_controller_type = "c1.small.x86"
+packet_controller_type = "c2.medium.x86"
  
-packet_dashboard_type = "c1.small.x86"
+packet_dashboard_type = "x1.small.x86"
 
-packet_compute-x86_type = "c2.medium.x86"
+packet_compute-x86_type = "m1.xlarge.x86"
 openstack_compute-x86_count = 1
 
 #packet_compute-arm_type =
